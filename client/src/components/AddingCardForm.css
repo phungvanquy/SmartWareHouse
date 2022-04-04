@@ -1,0 +1,42 @@
+#cover_layout {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.555);
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+}
+.row-cover-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#addFromContainer {
+  background-color: rgb(13, 185, 142);
+  color: rgb(238, 255, 0);
+  padding: 20px 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
+
+.header-addingCardForm {
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+}
+.row.group-button-products {
+  justify-content: center;
+}
+
+.group-button-products button {
+  background-color: black;
+  color: white;
+  margin: 4px;
+  padding-right: 30px;
+}

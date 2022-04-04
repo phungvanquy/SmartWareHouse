@@ -1,0 +1,19 @@
+.storedProduct {
+  background-image: linear-gradient(
+    to right,
+    #0c7423,
+    #29621b,
+    #385e14,
+    #618114,
+    #80920b
+  );
+  margin-bottom: 8px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgb(17, 17, 17);
+  padding: 5px;
+}
+
+.product-parameter {
+  padding-left: 5px;
+}

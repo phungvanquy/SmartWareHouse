@@ -1,0 +1,74 @@
+h1.wareHouse_header {
+  text-align: center;
+  color: rgba(255, 0, 0, 0.801);
+  text-shadow: 1px 1px black;
+}
+div.wareHouse {
+  border-radius: 20px;
+  background-image: linear-gradient(
+    to right bottom,
+    #dddddd,
+    #d8a99c,
+    #d3ba76,
+    #7aab5a,
+    #12ebc5
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.sensorIndicator,
+.bulbIndicator {
+  padding-bottom: 20px;
+}
+
+i.temperatureIcon {
+  color: blue;
+}
+
+i.humidityIcon {
+  color: green;
+}
+.sensorIndicator .col {
+  text-align: center;
+}
+
+.bulbIndicator .col {
+  text-align: center;
+}
+
+button.buttonPruducts {
+  width: 50%;
+}
+
+button.btnProducts {
+  background-image: linear-gradient(
+    to right bottom,
+    #05372a,
+    #06604a,
+    #078c6b,
+    #0aba8e,
+    #12ebb2
+  );
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.chart-container {
+  padding: 10px;
+}
+
+button.btnProducts:hover {
+  color: rgb(163, 168, 135);
+}
+
+.btnProducts-Link {
+  color: white;
+  text-decoration: none;
+}

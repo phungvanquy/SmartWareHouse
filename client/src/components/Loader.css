@@ -1,0 +1,19 @@
+div.cover-layer {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.555);
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  z-index: 999 !important;
+}
+
+#container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}

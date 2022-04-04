@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Gwendolyn:wght@900&family=Pacifico&display=swap");
+
+#brand {
+  color: white;
+  font-family: "Corinthia", cursive;
+  font-family: "Gwendolyn", cursive;
+  font-weight: 600;
+  text-shadow: 0.5px 0.5px rgb(255, 174, 0);
+}
+
+nav.bg-custom {
+  background-image: linear-gradient(
+    to right,
+    #053710,
+    #29621b,
+    #578f21,
+    #8ebd1f,
+    #cfeb12
+  );
+}
+
+.nav-link a {
+  margin-top: 6px;
+  text-decoration: none;
+  color: rgb(235, 137, 8);
+  font-weight: 400;
+  display: inline-block;
+}
+
+a.actived {
+  color: rgb(235, 137, 8);
+  font-weight: 800;
+}
