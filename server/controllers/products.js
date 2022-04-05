@@ -9,6 +9,15 @@ export const getProducts = async (req, res) => {
   } catch (error) {}
 };
 
+export const getProduct = async (req, res) => {
+  console.log("recv req");
+  const { id } = req.params;
+  try {
+    const product = await Product.findById(id);
+    res.status(200).json(product);
+  } catch (error) {}
+};
+
 /*------------------------CREATE_PRODUCT--------------------------- */
 export const createProduct = async (req, res) => {
   const product = req.body;

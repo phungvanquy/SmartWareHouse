@@ -1,0 +1,12 @@
+.product_container {
+  background-color: white;
+  min-height: 100vh;
+}
+
+li span {
+  font-weight: bold;
+}
+
+ul.list-storing-places li {
+  padding-top: 30px;
+}

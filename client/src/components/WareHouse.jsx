@@ -23,15 +23,14 @@ export const WareHouse = (props) => {
   };
 
   return (
-    <div className="wareHouse col-11 col-md-4">
-      {}
+    <div className="wareHouse col-11 col-sm-8 col-md-7 col-lg-5">
       <div className="container">
         <h1 className="wareHouse_header">WareHouse-1</h1>
         <div className="row sensorIndicator">
           <div className="col">
             <i className="fas fa-temperature-low temperatureIcon">
-              {"\u00A0"} Temperature: {props.data.sensorData.temperature}{" "}
-              Celcius
+              {"\u00A0"} Temperature: {props.data.sensorData.temperature}
+              <span>&#8451;</span>
             </i>
           </div>
           <div className="col">

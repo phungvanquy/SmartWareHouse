@@ -18,6 +18,7 @@ div.wareHouse {
   justify-content: center;
   margin: auto;
   margin-top: 10px;
+  box-shadow: 1px 1px 10px black;
 }
 
 .sensorIndicator,
@@ -40,10 +41,6 @@ i.humidityIcon {
   text-align: center;
 }
 
-button.buttonPruducts {
-  width: 50%;
-}
-
 button.btnProducts {
   background-image: linear-gradient(
     to right bottom,
@@ -57,13 +54,18 @@ button.btnProducts {
   border-bottom-right-radius: 20px;
   font-weight: 800;
   color: white;
-  text-shadow: 1px 1px black;
+  text-shadow: 1px 1px 5px black;
+  margin: 0;
+  padding: 0;
 }
 
 .chart-container {
   padding: 10px;
 }
 
+.btnProducts {
+  display: block;
+}
 button.btnProducts:hover {
   color: rgb(163, 168, 135);
 }
@@ -71,4 +73,8 @@ button.btnProducts:hover {
 .btnProducts-Link {
   color: white;
   text-decoration: none;
+}
+
+.btnProducts-Link:hover {
+  color: #ee5522;
 }

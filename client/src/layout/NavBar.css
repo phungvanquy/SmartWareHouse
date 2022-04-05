@@ -19,12 +19,26 @@ nav.bg-custom {
   );
 }
 
+.wareHouse_header {
+  padding-top: 15px;
+}
+
+button.navbar-toggler {
+  background-color: #388711;
+  color: white;
+  font-weight: bold;
+}
+
 .nav-link a {
   margin-top: 6px;
   text-decoration: none;
-  color: rgb(235, 137, 8);
-  font-weight: 400;
+  color: rgb(253, 252, 250);
+  font-weight: 600;
   display: inline-block;
+}
+
+.nav-link a:hover {
+  color: #d53f0b;
 }
 
 a.actived {

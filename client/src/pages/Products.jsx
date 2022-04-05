@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Product } from "../components/Product";
 import { NavBar } from "../layout/NavBar";
 import { Loader } from "../components/Loader";
@@ -8,9 +7,14 @@ import { socket } from "../socketIo/socketIO.jsx";
 import { AddingCardForm } from "../components/AddingCardForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/products.js";
+import { useParams } from "react-router-dom";
 
-export const Products = () => {
+export const Products = (props) => {
   const products = useSelector((state) => state.products);
+
+  const { wareHoseIndex } = useParams();
+
+  console.log(wareHoseIndex);
 
   const dispatch = useDispatch();
   const [state, setState] = useState({
@@ -73,7 +77,7 @@ export const Products = () => {
       <NavBar></NavBar>
 
       <div className="container" id="productsId-container">
-        <h3 id="productsHeader">WareHouse-1/Stored Products</h3>
+        <h3 id="productsHeader">{wareHoseIndex}/Stored Products</h3>
         {state.isLoading && <Loader></Loader>}
 
         {!state.isLoading && (

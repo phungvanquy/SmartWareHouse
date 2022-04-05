@@ -9,7 +9,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-let i = 0;
 
 const initialData = [];
 
@@ -19,11 +18,12 @@ export default function Chart() {
   let k = 0;
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       setData((data) => {
         return [...data, { time: k++, temp: Math.random() * (100 - 90) + 90 }];
       });
     }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -31,14 +31,14 @@ export default function Chart() {
       style={{
         backgroundColor: "white",
         width: "100%",
-        boxShadow: "2px 2px black",
+        boxShadow: "inset 1px 1px 10px black",
       }}
     >
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={data}
           margin={{
-            top: 5,
+            top: 20,
             right: 30,
             left: 0,
             bottom: 5,

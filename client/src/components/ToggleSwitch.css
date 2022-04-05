@@ -14,6 +14,7 @@
 .slider {
   position: absolute;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(132, 94, 94);
   top: 0;
   left: 0;
   right: 0;
@@ -24,23 +25,26 @@
 }
 
 .slider:before {
+  box-shadow: 2px 2px 5px rgb(132, 94, 94);
   position: absolute;
   content: "";
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: rgb(192, 45, 45);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #64ff49;
+  box-shadow: 2px 2px 5px rgb(132, 94, 94);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #64ff49;
+  box-shadow: 2px 2px 5px rgb(132, 94, 94);
 }
 
 input:checked + .slider:before {
