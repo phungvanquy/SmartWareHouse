@@ -1,3 +1,7 @@
+#productsId-container {
+  min-height: 100vh;
+}
+
 .storedProduct {
   background-image: linear-gradient(
     to right,

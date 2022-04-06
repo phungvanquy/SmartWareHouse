@@ -25,10 +25,15 @@
   border-radius: 20px;
 }
 
+.form-group.row label {
+  text-align: left;
+}
+
 .header-addingCardForm {
   justify-content: center;
   font-weight: 800;
   font-size: 20px;
+  padding-bottom: 20px;
 }
 .row.group-button-products {
   justify-content: center;

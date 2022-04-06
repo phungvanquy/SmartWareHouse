@@ -3,6 +3,8 @@ import { Loader } from "../components/Loader";
 import { WareHouse } from "../components/WareHouse";
 import { NavBar } from "../layout/NavBar";
 import { socket } from "../socketIo/socketIO.jsx";
+import { createProduct } from "../api";
+import { AddingCardForm } from "../components/AddingCardForm";
 
 export const Home = () => {
   const [state, setState] = useState({
@@ -63,11 +65,36 @@ export const Home = () => {
     };
   }, []);
 
+  // CONVERT file To Base64
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const submitHandle = async (e) => {
+    e.preventDefault();
+    var fileInput = e.target["name"].files[0];
+    console.log(fileInput);
+    const fileBase64 = await convertBase64(fileInput);
+    const { data } = await createProduct({ img: fileBase64 });
+    console.log(data);
+  };
+
   return (
     <React.Fragment>
       <NavBar></NavBar>
-      {!state.isLoading && <Loader></Loader>}
-      {state.isLoading &&
+      {state.isLoading && <Loader></Loader>}
+      {!state.isLoading &&
         state.wareHouses.map((wareHouse) => {
           return <WareHouse key={wareHouse.index} data={wareHouse}></WareHouse>;
         })}

@@ -31,7 +31,7 @@ io.on("connection", onConnectionHandle);
 /* -------------------------HTTP--------------------------- */
 /* Config cors allowing every ip for express Server  + HTTP server*/
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 
 // app.use("/warehouses", warehouseRoutes);
 app.use("/products", productRoutes);

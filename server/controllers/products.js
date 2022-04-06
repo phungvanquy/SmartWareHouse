@@ -10,18 +10,21 @@ export const getProducts = async (req, res) => {
 };
 
 export const getProduct = async (req, res) => {
-  console.log("recv req");
-  const { id } = req.params;
+  const { id: nfc_id } = req.params;
+
   try {
-    const product = await Product.findById(id);
-    res.status(200).json(product);
-  } catch (error) {}
+    const product = await Product.find({ nfc_id: nfc_id });
+    res.status(200).send(product);
+  } catch (error) {
+    console.log(error.message);
+    res.status(404).json({ message: error.message });
+  }
 };
 
 /*------------------------CREATE_PRODUCT--------------------------- */
 export const createProduct = async (req, res) => {
   const product = req.body;
-  console.log(product);
+
   const newProduct = new Product({ ...product });
 
   console.log(newProduct);

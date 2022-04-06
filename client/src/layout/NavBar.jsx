@@ -13,7 +13,6 @@ export const NavBar = () => {
         </span>
         <button
           className="navbar-toggler"
-          id="collapse_btn"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"

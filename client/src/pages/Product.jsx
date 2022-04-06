@@ -8,8 +8,8 @@ export default function Product() {
   const [state, setState] = useState({ isLoading: true, product: {} });
 
   useEffect(async () => {
-    const product = await (await fetchProduct(productId)).data;
-    console.log(product);
+    // Fetch product from list returned by server
+    const product = await (await fetchProduct(productId)).data[0];
     setState((prev) => {
       return { ...prev, isLoading: false, product: product };
     });
@@ -44,7 +44,8 @@ export default function Product() {
           <div className="row" style={{ paddingTop: "10px" }}>
             <div className="col-12 col-lg-6">
               <img
-                src="https://assets.hongkiat.com/uploads/revolutionary-products/oculus-rift.jpg"
+                // src={`${state.product.photo}`}
+                src={state.product.photo}
                 width="100%"
                 height="auto"
                 style={{ boxShadow: "1px 1px 5px black" }}
@@ -52,7 +53,7 @@ export default function Product() {
             </div>
             <div className="col-12 col-lg-6">
               <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
-                #id:123456
+                #id:{state.product.nfc_id}
               </h3>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">

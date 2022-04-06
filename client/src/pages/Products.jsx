@@ -28,7 +28,7 @@ export const Products = (props) => {
   // FETCH ALL DATA FROM DATABASE
   useEffect(() => {
     dispatch(getProducts(setState));
-  }, [dispatch]);
+  }, [state.isLoading]);
 
   // ADD EVENT LISTENER TO SOCKET
   useEffect(() => {
@@ -58,7 +58,7 @@ export const Products = (props) => {
         ...prevState,
         isLoading: true,
         isCardFound: false,
-        products: [],
+        // products: [],
       };
     });
   };
@@ -77,7 +77,7 @@ export const Products = (props) => {
       <NavBar></NavBar>
 
       <div className="container" id="productsId-container">
-        <h3 id="productsHeader">{wareHoseIndex}/Stored Products</h3>
+        <h3 id="productsHeader">Stored Products/{wareHoseIndex}</h3>
         {state.isLoading && <Loader></Loader>}
 
         {!state.isLoading && (
@@ -113,6 +113,7 @@ export const Products = (props) => {
               onClose={onCloseHandle}
               onCancel={onCancelHandle}
               productId={state.inforFoundCard.id}
+              currWarehouse={1}
             ></AddingCardForm>
           </div>
         )}

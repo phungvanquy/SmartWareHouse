@@ -11,9 +11,14 @@ const productSchema = new mongoose.Schema({
   owner: String,
   maxTemp: Number,
   maxHumid: Number,
+  photo: {
+    type: String,
+    contentType: String,
+  },
   storingPlacesInfo: [storageInfo],
   numberOfOverTemp: { type: Number, default: 0 },
   numberOfOverHumid: { type: Number, default: 0 },
+  currWarehouse: Number,
 });
 
 const Product = mongoose.model("Product", productSchema);
