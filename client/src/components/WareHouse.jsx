@@ -74,7 +74,7 @@ export const WareHouse = (props) => {
           <button className="btnProducts">
             <Link
               className="btnProducts-Link"
-              to={`/ware-house-${props.data.index}/products`}
+              to={`/warehouse-${props.data.index}/products`}
             >
               STORED PRODUCTS
             </Link>

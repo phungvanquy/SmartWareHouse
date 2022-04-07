@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route
-          path="/:wareHoseIndex/products"
+          path="/warehouse-:wareHoseIndex/products" // the number after ":" is params of url
           element={<Products></Products>}
         ></Route>
         <Route path="/Author" element={<Author></Author>} />

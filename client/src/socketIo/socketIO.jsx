@@ -1,5 +1,6 @@
 import socketIOClient from "socket.io-client";
 
-const ENDPOINT = "http://192.168.0.107:8080";
+import BASEIP from "../constants/baseIp";
+const ENDPOINT = `http://${BASEIP}:8080`;
 
 export const socket = socketIOClient(ENDPOINT);

@@ -2,9 +2,9 @@ import * as api from "../api/index.js";
 import { FETCH_ALL, CREATE, DELETE, UPDATE } from "../constants/actionTypes";
 
 // Action Creators - Redux thunk
-export const getProducts = (setState) => async (dispatch) => {
+export const getProducts = (setState, warehouseId) => async (dispatch) => {
   try {
-    const { data } = await api.fetchProducts();
+    const { data } = await api.fetchProducts(warehouseId);
     dispatch({ type: FETCH_ALL, payload: data });
 
     setState((prevState) => {

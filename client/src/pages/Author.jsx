@@ -1,4 +1,5 @@
 import React from "react";
+import { EditCardForm } from "../components/EditCardForm";
 import { NavBar } from "../layout/NavBar";
 import "./Author.css";
 
@@ -14,6 +15,8 @@ export const Author = () => {
         Gmail: phungvanquy97@gmail.com
         <br />
       </div>
+
+      <EditCardForm></EditCardForm>
     </div>
   );
 };

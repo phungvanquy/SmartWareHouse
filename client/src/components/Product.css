@@ -2,6 +2,25 @@
   min-height: 100vh;
 }
 
+.list-button {
+  display: flex;
+  align-items: right;
+  justify-content: end;
+}
+
+.list-button button {
+  border-radius: 50% 50% 50% 50%;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 1px 1px 8px black;
+  border: none;
+  margin-left: 4px;
+}
+
+.list-button button:hover {
+  box-shadow: 1px 1px 8px red;
+}
+
 .storedProduct {
   background-image: linear-gradient(
     to right,
@@ -20,4 +39,8 @@
 
 .product-parameter {
   padding-left: 5px;
+}
+
+.row.group-button-products button {
+  border-radius: 10px 10px 10px 10px;
 }

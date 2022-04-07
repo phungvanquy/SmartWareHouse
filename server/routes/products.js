@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getProducts);
+router.get("/:warehouseId", getProducts);
 
 router.get("/:id", getProduct);
 

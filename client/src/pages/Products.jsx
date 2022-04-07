@@ -27,7 +27,7 @@ export const Products = (props) => {
 
   // FETCH ALL DATA FROM DATABASE
   useEffect(() => {
-    dispatch(getProducts(setState));
+    dispatch(getProducts(setState, wareHoseIndex));
   }, [state.isLoading]);
 
   // ADD EVENT LISTENER TO SOCKET
@@ -75,9 +75,8 @@ export const Products = (props) => {
   return (
     <div>
       <NavBar></NavBar>
-
       <div className="container" id="productsId-container">
-        <h3 id="productsHeader">Stored Products/{wareHoseIndex}</h3>
+        <h3 id="productsHeader">Stored Products/Warehouse-{wareHoseIndex}</h3>
         {state.isLoading && <Loader></Loader>}
 
         {!state.isLoading && (

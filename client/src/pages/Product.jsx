@@ -9,7 +9,7 @@ export default function Product() {
 
   useEffect(async () => {
     // Fetch product from list returned by server
-    const product = await (await fetchProduct(productId)).data[0];
+    const product = (await fetchProduct(productId)).data[0];
     setState((prev) => {
       return { ...prev, isLoading: false, product: product };
     });

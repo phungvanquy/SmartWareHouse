@@ -42,7 +42,7 @@
   padding-bottom: 20px;
 }
 .row.group-button-products {
-  justify-content: right;
+  justify-content: center;
 }
 
 .group-button-products button {
@@ -50,5 +50,5 @@
   color: white;
   margin: 4px;
   padding-right: 30px;
-  width: 40%;
+  width: 30%;
 }

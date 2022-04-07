@@ -3,8 +3,10 @@ import Product from "../models/product.js";
 
 /*------------------------GET_PRODUCTS--------------------------- */
 export const getProducts = async (req, res) => {
+  const { warehouseId: currWarehouse } = req.params;
+  console.log(currWarehouse);
   try {
-    const products = await Product.find();
+    const products = await Product.find({ currWarehouse: currWarehouse });
     res.status(200).json(products);
   } catch (error) {}
 };
