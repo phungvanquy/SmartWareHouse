@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../actions/products";
 import "./Product.css";
+import { UpdateCardForm } from "./UpdateCardForm";
 
 export const Product = (props) => {
+  const [state, setState] = useState({ isUpdateCard: false });
   const dispatch = useDispatch();
 
   const onDeleteHandle = () => {
@@ -11,7 +13,17 @@ export const Product = (props) => {
     dispatch(deleteProduct(props.data._id));
   };
 
-  const onEditHandle = () => {};
+  const onEditHandle = () => {
+    setState({ isUpdateCard: true });
+  };
+
+  const onCloseHandle = () => {
+    setState({ isUpdateCard: false });
+  };
+
+  const onCancelHandle = () => {
+    setState({ isUpdateCard: false });
+  };
 
   return (
     <div className="storedProduct">
@@ -28,13 +40,24 @@ export const Product = (props) => {
 
         <div className="col-12 col-md-6 list-button">
           <button onClick={onDeleteHandle}>
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </button>
           <button onClick={onEditHandle}>
-            <i class="fas fa-edit"></i>
+            <i className="fas fa-edit"></i>
           </button>
         </div>
       </div>
+
+      {state.isUpdateCard && (
+        <div>
+          <UpdateCardForm
+            onClose={onCloseHandle}
+            onCancel={onCancelHandle}
+            productId={props.data.nfc_id}
+            currWarehouse={props.data.currWarehouse}
+          ></UpdateCardForm>
+        </div>
+      )}
     </div>
   );
 };

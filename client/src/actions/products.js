@@ -32,3 +32,12 @@ export const deleteProduct = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const updateProduct = (id, post) => async (dispatch) => {
+  try {
+    const { data } = await api.updateProduct(id, post);
+    dispatch({ type: UPDATE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

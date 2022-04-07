@@ -1,4 +1,4 @@
-#cover_layout {
+#cover_layout_update {
   top: 0;
   left: 0;
   width: 100vw;
@@ -21,7 +21,7 @@
   justify-content: center;
 }
 
-#addFromContainer {
+#updateFromContainer {
   background-color: rgb(13, 185, 142);
   color: rgb(238, 255, 0);
   padding: 20px 20px;
@@ -42,7 +42,7 @@
   padding-bottom: 20px;
 }
 .row.group-button-products {
-  justify-content: center;
+  justify-content: right;
 }
 
 .group-button-products button {
@@ -50,5 +50,5 @@
   color: white;
   margin: 4px;
   padding-right: 30px;
-  width: 30%;
+  width: 40%;
 }

@@ -1,15 +1,13 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createProduct } from "../actions/products";
-import { fetchProduct } from "../api";
+import { updateProduct } from "../actions/products";
 import convertBase64 from "../api/convertBase64";
-import "./AddingCardForm.css";
+import "./UpdateCardForm.css";
 import { Loader } from "./Loader";
 
-export const AddingCardForm = (props) => {
-  const title_ProductFound = "A Product was Found!";
-  const title_SuccessUpload = "Upload Product successfully!";
-  const title_ExistingProduct = "Product had already existed in the warehouse!";
+export const UpdateCardForm = (props) => {
+  const title_ProductFound = "Update Product";
+  const title_SuccessUpdata = "Update Product successfully!";
 
   const inputProductName = useRef(null);
   const inputProductOwner = useRef(null);
@@ -26,62 +24,35 @@ export const AddingCardForm = (props) => {
     existingProduct: {},
   });
 
-  const onAddClickHandle = async () => {
+  const onUpdateClickHandle = async () => {
+    const photoBase64 = await convertBase64(inputProductPhoto.current.files[0]);
+    const productData = {
+      nfc_id: props.productId,
+      name: inputProductName.current.value,
+      owner: inputProductOwner.current.value,
+      maxTemp: inputProductMaxTemp.current.value,
+      maxHumid: inputProductMaxHumid.current.value,
+      photo: photoBase64,
+      currWarehouse: props.currWarehouse,
+      storingPlacesInfo: {
+        storingPlace: `warehouse ${props.currWarehouse}`,
+        time: new Date(),
+      },
+    };
     setstate((prevState) => {
       return { ...prevState, isPostingData: true };
     });
-
-    const fetchedProduct = (await fetchProduct(props.productId)).data;
-
-    console.log(props.currWarehouse);
-    // check if fetched Product is existed in curr warehose
-    if (
-      fetchedProduct.length !== 0 &&
-      fetchedProduct[0]?.currWarehouse == props.currWarehouse
-    ) {
-      // if fetched Product is existed in curr warehose
-      inputProductName.current.value = fetchedProduct[0].name;
-      inputProductOwner.current.value = fetchedProduct[0].owner;
-      inputProductMaxTemp.current.value = fetchedProduct[0].maxTemp;
-      inputProductMaxHumid.current.value = fetchedProduct[0].maxHumid;
-      setstate((prevState) => {
-        return {
-          ...prevState,
-          existingProduct: fetchedProduct[0],
-          title: title_ExistingProduct,
-          isPostingData: false,
-          isPostDataDone: true,
-        };
-      });
-    } else {
-      // if fetched Product is NOT existed in curr warehose
-      const photoBase64 = await convertBase64(
-        inputProductPhoto.current.files[0]
-      );
-      const productData = {
-        nfc_id: props.productId,
-        name: inputProductName.current.value,
-        owner: inputProductOwner.current.value,
-        maxTemp: inputProductMaxTemp.current.value,
-        maxHumid: inputProductMaxHumid.current.value,
-        photo: photoBase64,
-        currWarehouse: props.currWarehouse,
-        storingPlacesInfo: {
-          storingPlace: `warehouse ${props.currWarehouse}`,
-          time: new Date(),
-        },
+    await dispatch(updateProduct(props.productId, productData));
+    setstate((prevState) => {
+      return {
+        ...prevState,
+        isPostingData: false,
+        isPostDataDone: true,
+        title: title_SuccessUpdata,
       };
-      await dispatch(createProduct(productData));
-      setstate((prevState) => {
-        return {
-          ...prevState,
-          isPostingData: false,
-          isPostDataDone: true,
-          title: title_SuccessUpload,
-        };
-      });
-    }
+    });
   };
+
   const onCancelClickHandle = () => {
     props.onCancel();
   };
@@ -92,8 +63,8 @@ export const AddingCardForm = (props) => {
 
   //********************************** */
   return (
-    <div className="row" id="cover_layout">
-      <form id="addFromContainer" className="col-xxl-6 col-md-8 col-11">
+    <div className="row" id="cover_layout_update">
+      <form id="updateFromContainer" className="col-xxl-6 col-md-8 col-11">
         <div className="row header-addingCardForm">{state.title}</div>
         <div className="form-group row">
           <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
@@ -103,7 +74,7 @@ export const AddingCardForm = (props) => {
             <input
               type="text"
               className="form-control"
-              id="productId"
+              id="productId_update"
               readOnly
               placeholder="ID"
               value={props.productId}
@@ -118,7 +89,7 @@ export const AddingCardForm = (props) => {
             <input
               type="text"
               className="form-control"
-              id="inputProductName"
+              id="inputProductName_update"
               ref={inputProductName}
               placeholder="Name"
             />
@@ -132,7 +103,7 @@ export const AddingCardForm = (props) => {
             <input
               type="text"
               className="form-control"
-              id="inputProductOwner"
+              id="inputProductOwner_update"
               ref={inputProductOwner}
               placeholder="Owner"
             />
@@ -146,7 +117,7 @@ export const AddingCardForm = (props) => {
             <input
               type="text"
               className="form-control"
-              id="inputProductMaxTemp"
+              id="inputProductMaxTemp_update"
               ref={inputProductMaxTemp}
               placeholder="maxTemperature"
             />
@@ -160,7 +131,7 @@ export const AddingCardForm = (props) => {
             <input
               type="text"
               className="form-control"
-              id="inputProductMaxHumid"
+              id="inputProductMaxHumid_update"
               ref={inputProductMaxHumid}
               placeholder="maxHumidity"
             />
@@ -174,7 +145,7 @@ export const AddingCardForm = (props) => {
             <input
               type="file"
               className="form-control"
-              id="inputProductPhoto"
+              id="inputProductPhoto_update"
               ref={inputProductPhoto}
               placeholder="ProductPhoto"
             />
@@ -182,8 +153,12 @@ export const AddingCardForm = (props) => {
         </div>
         <div className="row group-button-products">
           {!state.isPostingData && !state.isPostDataDone && (
-            <button type="button" className="col-4" onClick={onAddClickHandle}>
-              <i className="fas fa-plus"> Add</i>
+            <button
+              type="button"
+              className="col-4"
+              onClick={onUpdateClickHandle}
+            >
+              <i className="fas fa-plus"> Update</i>
             </button>
           )}
 

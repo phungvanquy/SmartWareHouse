@@ -8,19 +8,19 @@ import { AddingCardForm } from "../components/AddingCardForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/products.js";
 import { useParams } from "react-router-dom";
+import { UpdateCardForm } from "../components/UpdateCardForm";
 
 export const Products = (props) => {
   const products = useSelector((state) => state.products);
 
   const { wareHoseIndex } = useParams();
 
-  console.log(wareHoseIndex);
-
   const dispatch = useDispatch();
   const [state, setState] = useState({
     isLoading: true,
     isScanning: false,
     isCardFound: false,
+    isUpdateCard: false,
     inforFoundCard: {},
     inforToSubmit: {},
   });
@@ -58,7 +58,6 @@ export const Products = (props) => {
         ...prevState,
         isLoading: true,
         isCardFound: false,
-        // products: [],
       };
     });
   };
@@ -112,10 +111,12 @@ export const Products = (props) => {
               onClose={onCloseHandle}
               onCancel={onCancelHandle}
               productId={state.inforFoundCard.id}
-              currWarehouse={1}
+              currWarehouse={wareHoseIndex}
             ></AddingCardForm>
           </div>
         )}
+
+
       </div>
     </div>
   );

@@ -55,30 +55,30 @@ export default function Product() {
               <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
                 #id:{state.product.nfc_id}
               </h3>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
+              <ul Name="list-group list-group-flush">
+                <li className="list-group-item">
                   <span>Name:</span> {state.product.name}
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <span>Owner:</span> {state.product.owner}
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <span>Maximun Storage Temperature:</span>{" "}
                   {state.product.maxTemp}
                   <span>&#8451;</span>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <span>Maximun Storage Humidity:</span>{" "}
                   {state.product.maxHumid}%
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <span>Condition:</span> Good
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <span>Rating: </span>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
+                  <i className="far fa-star"></i>
+                  <i className="far fa-star"></i>
+                  <i className="far fa-star"></i>
                 </li>
               </ul>
             </div>

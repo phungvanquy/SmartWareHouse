@@ -93,8 +93,8 @@ export const Home = () => {
   return (
     <React.Fragment>
       <NavBar></NavBar>
-      {!state.isLoading && <Loader></Loader>}
-      {state.isLoading &&
+      {state.isLoading && <Loader></Loader>}
+      {!state.isLoading &&
         state.wareHouses.map((wareHouse) => {
           return <WareHouse key={wareHouse.index} data={wareHouse}></WareHouse>;
         })}
