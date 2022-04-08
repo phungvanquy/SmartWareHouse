@@ -10,21 +10,21 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const initialData = [];
-
-export default function Chart() {
-  const [data, setData] = useState(initialData);
-
-  let k = 0;
+export default function Chart(props) {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setData((data) => {
-        return [...data, { time: k++, temp: Math.random() * (100 - 90) + 90 }];
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    setData((prevData) => {
+      return [
+        ...prevData,
+        {
+          time: props.data.time,
+          temperature: props.data.temperature,
+          humidity: props.data.humidity,
+        },
+      ];
+    });
+  }, [props.data]);
 
   return (
     <div
@@ -46,8 +46,33 @@ export default function Chart() {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
-          <YAxis />
-          <Line type="monotone" dataKey="temp" stroke="#82ca9d" />
+
+          <YAxis
+            yAxisId="left"
+            orientation="left"
+            dataKey="temperature"
+            domain={["dataMin-40", "dataMax + 10"]}
+          />
+          <YAxis
+            label="Humid"
+            yAxisId="right"
+            orientation="right"
+            dataKey="humidity"
+            domain={["dataMin - 10", "dataMax + 10"]}
+          />
+
+          <Line
+            yAxisId="left"
+            type="monotone"
+            dataKey="temperature"
+            stroke="#ee5522"
+          />
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="humidity"
+            stroke="#229dee"
+          />
           <Tooltip></Tooltip>
         </LineChart>
       </ResponsiveContainer>

@@ -8,7 +8,6 @@ import { AddingCardForm } from "../components/AddingCardForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/products.js";
 import { useParams } from "react-router-dom";
-import { UpdateCardForm } from "../components/UpdateCardForm";
 
 export const Products = (props) => {
   const products = useSelector((state) => state.products);
@@ -115,8 +114,6 @@ export const Products = (props) => {
             ></AddingCardForm>
           </div>
         )}
-
-
       </div>
     </div>
   );

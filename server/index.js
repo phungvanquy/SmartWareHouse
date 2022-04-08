@@ -10,8 +10,8 @@ import cors from "cors";
 import onConnectionHandle from "./socketIO/index.js";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-
 import productRoutes from "./routes/products.js";
+import sendMessWhatsApp from "./utilities/sendMessWhatsApp.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -44,8 +44,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    httpServer.listen(PORT, () =>
-      console.log(`Server is listening on Port ${PORT}`)
-    )
+    httpServer.listen(PORT, () => {
+      console.log(`Server is listening on Port ${PORT}`);
+    })
   )
   .catch((error) => console.log(error.message));

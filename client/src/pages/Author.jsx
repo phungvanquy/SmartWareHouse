@@ -1,8 +1,10 @@
 import React from "react";
 import { NavBar } from "../layout/NavBar";
+import { socket } from "../socketIo/socketIO";
 import "./Author.css";
 
 export const Author = () => {
+  socket.emit("configParamsWareHouse", { maxTemp: 24, maxHumid: 96 });
   return (
     <div>
       <NavBar></NavBar>

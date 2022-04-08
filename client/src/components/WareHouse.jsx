@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToggleSwitch } from "./ToggleSwitch";
 import "./WareHouse.css";
 import { Link } from "react-router-dom";
@@ -22,6 +22,19 @@ export const WareHouse = (props) => {
     });
   };
 
+  useEffect(() => {
+    setstate((prevState) => {
+      return {
+        ...prevState,
+        temperature: props.data.sensorData.temperature,
+        humidity: props.data.sensorData.humidity,
+        bulbState_1: props.data.sensorData.bulbState_1,
+        bulbState_2: props.data.sensorData.bulbState_2,
+        bulbState_3: props.data.sensorData.bulbState_3,
+      };
+    });
+  }, [props]);
+
   return (
     <div className="wareHouse col-11 col-sm-8 col-md-7 col-lg-5">
       <div className="container">
@@ -29,13 +42,13 @@ export const WareHouse = (props) => {
         <div className="row sensorIndicator">
           <div className="col">
             <i className="fas fa-temperature-low temperatureIcon">
-              {"\u00A0"} Temperature: {props.data.sensorData.temperature}
+              {"\u00A0"} Temperature: {state.temperature}
               <span>&#8451;</span>
             </i>
           </div>
           <div className="col">
             <i className="fas fa-tint humidityIcon">
-              {"\u00A0"} Humidity: {props.data.sensorData.humidity}%
+              {"\u00A0"} Humidity: {state.humidity}%
             </i>
           </div>
         </div>
@@ -68,7 +81,13 @@ export const WareHouse = (props) => {
         </div>
 
         <div className="row chart-container">
-          <Chart></Chart>
+          <Chart
+            data={{
+              temperature: state.temperature,
+              humidity: state.humidity,
+              time: new Date().toLocaleTimeString(),
+            }}
+          ></Chart>
         </div>
         <div className="row">
           <button className="btnProducts">
