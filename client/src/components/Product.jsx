@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteProduct } from "../actions/products";
 import "./Product.css";
 import { UpdateCardForm } from "./UpdateCardForm";
@@ -9,7 +10,6 @@ export const Product = (props) => {
   const dispatch = useDispatch();
 
   const onDeleteHandle = () => {
-    console.log(props.data._id);
     dispatch(deleteProduct(props.data._id));
   };
 
@@ -45,6 +45,11 @@ export const Product = (props) => {
           <button onClick={onEditHandle}>
             <i className="fas fa-edit"></i>
           </button>
+          <Link to={`/products/${props.data.nfc_id}`}>
+            <button>
+              <i class="fas fa-info" style={{ color: "black" }}></i>
+            </button>
+          </Link>
         </div>
       </div>
 

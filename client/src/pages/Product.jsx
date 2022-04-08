@@ -7,13 +7,19 @@ export default function Product() {
   const { productId } = useParams();
   const [state, setState] = useState({ isLoading: true, product: {} });
 
-  useEffect(async () => {
-    // Fetch product from list returned by server
-    const product = (await fetchProduct(productId)).data[0];
-    setState((prev) => {
-      return { ...prev, isLoading: false, product: product };
-    });
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      // Fetch product from list returned by server
+      const product = (await fetchProduct(productId)).data[0];
+      console.log(product);
+
+      setState((prev) => {
+        return { ...prev, isLoading: false, product: product };
+      });
+    }
+
+    fetchData();
+  }, [productId]);
 
   return (
     <React.Fragment>
@@ -30,7 +36,7 @@ export default function Product() {
               textShadow: "1px 1px 5px black",
             }}
           >
-            <i class="fas fa-info-circle"></i> Product Infomation
+            <i className="fas fa-info-circle"></i> Product Infomation
           </span>
         </div>
       </nav>
@@ -55,7 +61,7 @@ export default function Product() {
               <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
                 #id:{state.product.nfc_id}
               </h3>
-              <ul Name="list-group list-group-flush">
+              <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <span>Name:</span> {state.product.name}
                 </li>
@@ -98,18 +104,15 @@ export default function Product() {
                 className="list-storing-places"
                 style={{ listStyleType: "none" }}
               >
-                <li>
-                  <i class="fas fa-warehouse"></i>
-                  &nbsp; 11:15 am, 1/1/2022: Warehouse1
-                </li>
-                <li>
-                  <i class="fas fa-warehouse"></i>
-                  &nbsp; 11:15 am, 2/1/2022: Warehouse2
-                </li>
-                <li>
-                  <i class="fas fa-warehouse"></i>
-                  &nbsp; 11:15 am, 3/1/2022: Warehouse3
-                </li>
+                {state.product.storingPlacesInfo.map((storingPlaceInfo) => {
+                  return (
+                    <li key={storingPlaceInfo.time}>
+                      <i className="fas fa-warehouse"></i>
+                      &nbsp;{" "}
+                      {`${storingPlaceInfo.time}: ${storingPlaceInfo.storingPlace}`}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

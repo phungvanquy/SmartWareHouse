@@ -68,7 +68,10 @@ export const AddingCardForm = (props) => {
         currWarehouse: props.currWarehouse,
         storingPlacesInfo: {
           storingPlace: `warehouse ${props.currWarehouse}`,
-          time: new Date(),
+          time:
+            new Date().toLocaleTimeString() +
+            "-" +
+            new Date().toLocaleDateString(),
         },
       };
       await dispatch(createProduct(productData));

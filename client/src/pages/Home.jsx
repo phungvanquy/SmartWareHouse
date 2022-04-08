@@ -3,7 +3,6 @@ import { Loader } from "../components/Loader";
 import { WareHouse } from "../components/WareHouse";
 import { NavBar } from "../layout/NavBar";
 import { socket } from "../socketIo/socketIO.jsx";
-import { createProduct } from "../api";
 
 export const Home = () => {
   const [state, setState] = useState({
@@ -11,6 +10,17 @@ export const Home = () => {
     wareHouses: [
       {
         index: 1,
+        productIds: [],
+        sensorData: {
+          temperature: null,
+          humidity: null,
+          bulbState_1: false,
+          bulbState_2: false,
+          bulbState_3: false,
+        },
+      },
+      {
+        index: 2,
         productIds: [],
         sensorData: {
           temperature: null,
@@ -63,22 +73,6 @@ export const Home = () => {
       socket.removeAllListeners();
     };
   }, []);
-
-  // CONVERT file To Base64
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   return (
     <React.Fragment>

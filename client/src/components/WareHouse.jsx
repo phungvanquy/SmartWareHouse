@@ -36,9 +36,9 @@ export const WareHouse = (props) => {
   }, [props]);
 
   return (
-    <div className="wareHouse col-11 col-sm-8 col-md-7 col-lg-5">
+    <div className="col-11 col-sm-8 col-md-7 col-lg-5 wareHouse">
       <div className="container">
-        <h1 className="wareHouse_header">WareHouse-1</h1>
+        <h1 className="wareHouse_header">WareHouse-{props.data.index}</h1>
         <div className="row sensorIndicator">
           <div className="col">
             <i className="fas fa-temperature-low temperatureIcon">
@@ -85,7 +85,12 @@ export const WareHouse = (props) => {
             data={{
               temperature: state.temperature,
               humidity: state.humidity,
-              time: new Date().toLocaleTimeString(),
+              time: new Date().toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+                hour12: false,
+              }),
             }}
           ></Chart>
         </div>
