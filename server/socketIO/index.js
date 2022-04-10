@@ -16,7 +16,7 @@ const onConnectionHandle = (socket) => {
     console.log(data);
     const stateBulbToInt = data.state ? 1 : 0;
     socket.broadcast.emit("toggleLED", {
-      warehouseId: 1,
+      warehouseId: data.warehouseId,
       ledId: data.ledId,
       state: stateBulbToInt,
     });
