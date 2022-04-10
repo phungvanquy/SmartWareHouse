@@ -9,7 +9,7 @@ const onConnectionHandle = (socket) => {
   // Scan MIFARE card when client click "scan"
   socket.on("CMDfromClient_scanCardId", (data) => {
     console.log("CMDfromClient_scanCardId");
-    socket.broadcast.emit("scanCardId", { warehouseId: 1 });
+    socket.broadcast.emit("scanCardId", { warehouseId: data.warehouseId });
   });
 
   socket.on("CMDfromClient_toggleLED", (data) => {
@@ -43,7 +43,7 @@ const onConnectionHandle = (socket) => {
       localStorage.getItem(`warehouse${msg.index}`)
     );
 
-    if (configParamsWarehouse.maxTemp && configParamsWarehouse.maxHumid) {
+    if (configParamsWarehouse?.maxTemp && configParamsWarehouse?.maxHumid) {
       if (msg.temperature > configParamsWarehouse.maxTemp) {
         sendMessWhatsApp("The temperature is very high!");
       }
@@ -57,6 +57,13 @@ const onConnectionHandle = (socket) => {
   socket.on("configParamsWareHouse", (data) => {
     console.log("messageio: " + JSON.stringify(data));
     localStorage.setItem("warehouse1", JSON.stringify(data));
+  });
+
+  socket.on("CMDfromClient_sensorMeasuring", (data) => {
+    console.log(data);
+    socket.broadcast.emit("sensorMeasuring", {
+      onOff: data.onOff,
+    });
   });
 
   socket.on("disconnect", function () {

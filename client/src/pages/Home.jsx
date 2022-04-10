@@ -69,7 +69,12 @@ export const Home = () => {
       });
     });
 
+    // Enable sensor measuring
+    socket.emit("CMDfromClient_sensorMeasuring", { onOff: 1 });
+
     return function cleanup() {
+      //disable sensor measuring
+      socket.emit("CMDfromClient_sensorMeasuring", { onOff: 0 });
       socket.removeAllListeners();
     };
   }, []);

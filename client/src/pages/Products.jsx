@@ -62,7 +62,7 @@ export const Products = (props) => {
   };
 
   function onScanClickHandle() {
-    socket.emit("CMDfromClient_scanCardId", "hello");
+    socket.emit("CMDfromClient_scanCardId", { warehouseId: wareHoseIndex });
     setState((prevState) => {
       return { ...prevState, isScanning: true };
     });
