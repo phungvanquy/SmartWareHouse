@@ -43,20 +43,25 @@ const onConnectionHandle = (socket) => {
       localStorage.getItem(`warehouse${msg.index}`)
     );
 
-    if (configParamsWarehouse?.maxTemp && configParamsWarehouse?.maxHumid) {
+    if (configParamsWarehouse?.maxTemp || configParamsWarehouse?.maxHumid) {
+      const time = new Date().toLocaleTimeString();
       if (msg.temperature > configParamsWarehouse.maxTemp) {
-        sendMessWhatsApp("The temperature is very high!");
+        sendMessWhatsApp(
+          `The temperature is very high in warehouse ${msg.index}! ${time}`
+        );
       }
 
       if (msg.humidity > configParamsWarehouse.maxHumid) {
-        sendMessWhatsApp("The humidity is very high!");
+        sendMessWhatsApp(
+          `The humidity is very high in warehouse ${msg.index}! ${time}`
+        );
       }
     }
   });
 
   socket.on("configParamsWareHouse", (data) => {
     console.log("messageio: " + JSON.stringify(data));
-    localStorage.setItem("warehouse1", JSON.stringify(data));
+    localStorage.setItem(`warehouse${data.index}`, JSON.stringify(data));
   });
 
   socket.on("CMDfromClient_sensorMeasuring", (data) => {

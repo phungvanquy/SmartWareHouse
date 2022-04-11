@@ -78,3 +78,10 @@ button.btnProducts:hover {
 .btnProducts-Link:hover {
   color: #ee5522;
 }
+
+button.col-8.btn_setParams {
+  border-radius: 10px;
+  border: 1px solid green;
+  box-shadow: 1px 1px 5px rgb(0, 255, 30);
+  outline: none;
+}

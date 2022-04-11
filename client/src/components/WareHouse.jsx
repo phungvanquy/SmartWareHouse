@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ToggleSwitch } from "./ToggleSwitch";
 import "./WareHouse.css";
 import { Link } from "react-router-dom";
@@ -6,6 +6,9 @@ import { socket } from "../socketIo/socketIO.jsx";
 import Chart from "../components/Chart";
 
 export const WareHouse = (props) => {
+  const inputMaxTemp = useRef(null);
+  const inputMaxHumid = useRef(null);
+
   const [state, setstate] = useState({
     temperature: props.data.sensorData.temperature,
     humidity: props.data.sensorData.humidity,
@@ -34,6 +37,14 @@ export const WareHouse = (props) => {
       };
     });
   }, [props]);
+
+  const setParamsHandle = () => {
+    socket.emit("configParamsWareHouse", {
+      index: props.data.index,
+      maxTemp: inputMaxTemp.current.value,
+      maxHumid: inputMaxHumid.current.value,
+    });
+  };
 
   return (
     <div className="col-11 col-sm-8 col-md-7 col-lg-5 wareHouse">
@@ -78,6 +89,41 @@ export const WareHouse = (props) => {
               bulbState={state.bulbState_3}
             ></ToggleSwitch>
           </div>
+        </div>
+
+        <div className="row" style={{ justifyContent: "center" }}>
+          <div className="col-6">
+            <div className="input-group mb-3">
+              <span className="input-group-text" style={{ fontWeight: "bold" }}>
+                MaxTemp
+              </span>
+              <input
+                ref={inputMaxTemp}
+                type="number"
+                className="form-control"
+                placeholder="50"
+                style={{ boxShadow: "inset 1px 1px 5px black" }}
+              />
+            </div>
+          </div>
+
+          <div className="col-6">
+            <div className="input-group mb-3">
+              <span className="input-group-text" style={{ fontWeight: "bold" }}>
+                MaxHumid
+              </span>
+              <input
+                ref={inputMaxHumid}
+                type="number"
+                className="form-control"
+                placeholder="99"
+                style={{ boxShadow: "inset 1px 1px 5px black" }}
+              />
+            </div>
+          </div>
+          <button className="col-8 btn_setParams" onClick={setParamsHandle}>
+            Set Parameters
+          </button>
         </div>
 
         <div className="row chart-container">
