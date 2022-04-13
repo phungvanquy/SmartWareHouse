@@ -3,6 +3,24 @@
   min-height: 100vh;
 }
 
+@keyframes zoomInOut {
+  from {
+    height: 95%;
+    width: 95%;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#product_img {
+  /* animation: zoomInOut;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate; */
+}
+
 li span {
   font-weight: bold;
 }

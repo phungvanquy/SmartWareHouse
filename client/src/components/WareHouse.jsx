@@ -93,7 +93,14 @@ export const WareHouse = (props) => {
 
         <div className="row" style={{ justifyContent: "center" }}>
           <div className="col-6">
-            <div className="input-group mb-3">
+            <div
+              className="input-group mb-3"
+              style={{
+                boxShadow: "1px 1px 5px black",
+                borderRadius: "6px",
+                padding: "4px",
+              }}
+            >
               <span className="input-group-text" style={{ fontWeight: "bold" }}>
                 MaxTemp
               </span>
@@ -103,12 +110,20 @@ export const WareHouse = (props) => {
                 className="form-control"
                 placeholder="50"
                 style={{ boxShadow: "inset 1px 1px 5px black" }}
+                defaultValue={50}
               />
             </div>
           </div>
 
           <div className="col-6">
-            <div className="input-group mb-3">
+            <div
+              className="input-group mb-3"
+              style={{
+                boxShadow: "1px 1px 5px black",
+                borderRadius: "6px",
+                padding: "4px",
+              }}
+            >
               <span className="input-group-text" style={{ fontWeight: "bold" }}>
                 MaxHumid
               </span>
@@ -118,10 +133,18 @@ export const WareHouse = (props) => {
                 className="form-control"
                 placeholder="99"
                 style={{ boxShadow: "inset 1px 1px 5px black" }}
+                defaultValue={90}
               />
             </div>
           </div>
-          <button className="col-8 btn_setParams" onClick={setParamsHandle}>
+          <button
+            className="col-8 btn_setParams"
+            onClick={setParamsHandle}
+            style={{
+              fontWeight: "bold",
+              textShadow: "2px 2px 10px black",
+            }}
+          >
             Set Parameters
           </button>
         </div>

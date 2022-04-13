@@ -29,7 +29,7 @@ export default function Product() {
       >
         <div className="container-fluid" style={{ paddingLeft: "50%" }}>
           <span
-            className="navbar-brand mb-0 h1"
+            className="navbar-brand mb-0 h1 product_infor_title"
             id="brand"
             style={{
               transform: "translateX(-50%)",
@@ -47,15 +47,28 @@ export default function Product() {
 
       {!state.isLoading && (
         <div className="container product_container">
-          <div className="row" style={{ paddingTop: "10px" }}>
-            <div className="col-12 col-lg-6">
-              <img
-                // src={`${state.product.photo}`}
+          <div className="row" style={{ paddingTop: "10px", padding: "10px" }}>
+            <div
+              className="col-12 col-lg-6"
+              style={{
+                height: "305px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "inset 1px 1px 16px black",
+                padding: "10px",
+                backgroundImage: `url(${state.product.photo})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}
+            >
+              {/* <img
+                id="product_img"
                 src={state.product.photo}
                 width="100%"
                 height="auto"
-                style={{ boxShadow: "1px 1px 5px black" }}
-              ></img>
+                style={{ boxShadow: "inset 1px 1px 5px black", height: "100%" }}
+              ></img> */}
             </div>
             <div className="col-12 col-lg-6">
               <h3 style={{ textAlign: "center", paddingTop: "20px" }}>

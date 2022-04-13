@@ -47,13 +47,13 @@ const onConnectionHandle = (socket) => {
       const time = new Date().toLocaleTimeString();
       if (msg.temperature > configParamsWarehouse.maxTemp) {
         sendMessWhatsApp(
-          `The temperature is very high in warehouse ${msg.index}! ${time}`
+          `The temperature is very high (${msg.temperature}) in warehouse ${msg.index}! ${time}`
         );
       }
 
       if (msg.humidity > configParamsWarehouse.maxHumid) {
         sendMessWhatsApp(
-          `The humidity is very high in warehouse ${msg.index}! ${time}`
+          `The humidity is very high (${msg.humidity}) in warehouse ${msg.index}! ${time}`
         );
       }
     }
