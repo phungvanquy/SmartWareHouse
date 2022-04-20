@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         default:
           new Date().toLocaleTimeString() +
-          "-" +
+          ", " +
           new Date().toLocaleDateString(),
       },
     },

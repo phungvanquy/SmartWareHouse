@@ -47,7 +47,7 @@ export const Product = (props) => {
           </button>
           <Link to={`/products/${props.data.nfc_id}`}>
             <button>
-              <i class="fas fa-info" style={{ color: "black" }}></i>
+              <i className="fas fa-info" style={{ color: "black" }}></i>
             </button>
           </Link>
         </div>

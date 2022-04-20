@@ -70,7 +70,7 @@ export const AddingCardForm = (props) => {
           storingPlace: `warehouse ${props.currWarehouse}`,
           time:
             new Date().toLocaleTimeString() +
-            "-" +
+            ", " +
             new Date().toLocaleDateString(),
         },
       };

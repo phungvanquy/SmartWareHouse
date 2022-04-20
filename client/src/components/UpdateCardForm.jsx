@@ -36,7 +36,10 @@ export const UpdateCardForm = (props) => {
       currWarehouse: props.currWarehouse,
       storingPlacesInfo: {
         storingPlace: `warehouse ${props.currWarehouse}`,
-        time: new Date(),
+        time:
+          new Date().toLocaleTimeString() +
+          ", " +
+          new Date().toLocaleDateString(),
       },
     };
     setstate((prevState) => {

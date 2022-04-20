@@ -82,7 +82,7 @@ export const WareHouse = (props) => {
             ></ToggleSwitch>
           </div>
           <div className="col">
-            <i className="fas fa-lightbulb"> LED 3</i>
+            <i className="fas fa-lightbulb"> LED 3/Door</i>
             <ToggleSwitch
               onChange={onClickHandle}
               id={3}

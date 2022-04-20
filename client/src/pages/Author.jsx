@@ -1,6 +1,5 @@
 import React from "react";
 import { NavBar } from "../layout/NavBar";
-import { socket } from "../socketIo/socketIO";
 import "./Author.css";
 
 export const Author = () => {

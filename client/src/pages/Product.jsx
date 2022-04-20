@@ -82,12 +82,12 @@ export default function Product() {
                   <span>Owner:</span> {state.product.owner}
                 </li>
                 <li className="list-group-item">
-                  <span>Maximun Storage Temperature:</span>{" "}
+                  <span>Maximum Storing Temperature:</span>{" "}
                   {state.product.maxTemp}
                   <span>&#8451;</span>
                 </li>
                 <li className="list-group-item">
-                  <span>Maximun Storage Humidity:</span>{" "}
+                  <span>Maximum Storing Humidity:</span>{" "}
                   {state.product.maxHumid}%
                 </li>
                 <li className="list-group-item">
@@ -109,11 +109,36 @@ export default function Product() {
               <h5
                 style={{
                   textAlign: "center",
+                  fontWeight: "bold",
                 }}
               >
                 Storage Information
               </h5>
-              <ul
+
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Time/Date</th>
+                    <th scope="col">Storing Place</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {state.product.storingPlacesInfo.map((storingPlaceInfo) => {
+                    return (
+                      <tr key={storingPlaceInfo.time}>
+                        <th scope="row">1</th>
+                        <td>{`${storingPlaceInfo.time}`}</td>
+                        <td>
+                          <i className="fas fa-warehouse"></i>
+                          {` ${storingPlaceInfo.storingPlace}`}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              {/* <ul
                 className="list-storing-places"
                 style={{ listStyleType: "none" }}
               >
@@ -126,7 +151,7 @@ export default function Product() {
                     </li>
                   );
                 })}
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
